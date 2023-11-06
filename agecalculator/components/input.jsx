@@ -7,9 +7,10 @@ const Input = ({ time, ts }) => {
         DAY
       </label>
       <input
-        type=""
+        type="date"
         placeholder="DD"
-        className="w-[110px] h-[4rem] lg:w-[140px] rounded-lg border border-slate-300 p-4 outline-none "
+        className="w-[110px] h-[4rem] lg:w-[140px] rounded-lg border border-slate-300 p-4 outline-none invalid:border-red-500 invalid:text-red-500 "
+        required
       />
     </div>
   );
