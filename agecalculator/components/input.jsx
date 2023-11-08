@@ -17,13 +17,14 @@ const Input = ({ time, ts }) => {
   return (
     <div className="flex flex-col gap-y-1">
       <label
-        htmlFor=""
-        className="text-sm md:text-base font-bold ms-1 invalid:text-red-500   "
+        htmlFor="date"
+        className="text-sm md:text-base font-bold ms-1 invalid:text-red-500"
       >
         {time}
       </label>
       <input
         type="text"
+        id="date"
         value={inputValue}
         onChange={handleInputChange}
         pattern="[0-9]+"
