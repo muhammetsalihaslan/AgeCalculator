@@ -26,9 +26,9 @@ const Hero = () => {
         />
       </div>
       <div>
-        <Result />
-        <Result />
-        <Result />
+        <Result timePart="day" />
+        <Result timePart="month" />
+        <Result timePart="year" />
       </div>
     </div>
   );
