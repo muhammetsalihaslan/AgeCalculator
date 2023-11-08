@@ -1,15 +1,20 @@
-import React from "react";
+"use client";
+import React, { useState } from "react";
 import Input from "./input";
 import Image from "next/image";
 import Result from "./result";
 
 const Hero = () => {
+  const [day, setDay] = useState("");
+  const [month, setMonth] = useState("");
+  const [year, setYear] = useState("");
+
   return (
     <div className="flex flex-col bg-white ms-3 me-3 h-3/4 w-9/12  rounded-t-3xl rounded-bl-3xl rounded-br-[7rem] md:w-[650px] ">
       <div className="flex justify-start p-5 mt-10 ms-5 me-5 gap-x-5 ">
-        <Input />
-        <Input />
-        <Input />
+        <Input time="DAY" ts="DD" />
+        <Input time="MONTH" ts="MM" />
+        <Input time="YEAR" ts="YYYY" />
       </div>
       <hr className="m-6" />
       <div className="flex justify-center sm:justify-end sm:me-[30px]">
