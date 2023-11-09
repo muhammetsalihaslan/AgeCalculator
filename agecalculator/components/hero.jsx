@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Input from "./input";
 import Image from "next/image";
 import Result from "./result";
@@ -8,6 +8,9 @@ const Hero = () => {
   const [day, setDay] = useState("");
   const [month, setMonth] = useState("");
   const [year, setYear] = useState("");
+  const [age, setAge] = useState("--");
+
+  useEffect(() => {});
 
   return (
     <div className="flex flex-col bg-white ms-3 me-3 h-3/4 w-9/12  rounded-t-3xl rounded-bl-3xl rounded-br-[7rem] md:w-[650px] ">
@@ -18,8 +21,18 @@ const Hero = () => {
           value={day}
           onChange={(e) => setDay(e.target.value)}
         />
-        <Input time="MONTH" ts="MM" value={month} />
-        <Input time="YEAR" ts="YYYY" value={year} />
+        <Input
+          time="MONTH"
+          ts="MM"
+          value={month}
+          onChange={(e) => setMonth(e.target.value)}
+        />
+        <Input
+          time="YEAR"
+          ts="YYYY"
+          value={year}
+          onChange={(e) => setYear(e.target.value)}
+        />
       </div>
       <hr className="m-6" />
       <div className="flex justify-center sm:justify-end sm:me-[30px]">
@@ -31,9 +44,9 @@ const Hero = () => {
         />
       </div>
       <div>
-        <Result timePart="year" />
-        <Result timePart="month" />
-        <Result timePart="day" />
+        <Result timePart="year" age={age} />
+        <Result timePart="month" age={age} />
+        <Result timePart="day" age={age} />
       </div>
     </div>
   );
