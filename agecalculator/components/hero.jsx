@@ -10,7 +10,25 @@ const Hero = () => {
   const [year, setYear] = useState("");
   const [age, setAge] = useState("--");
 
-  useEffect(() => {});
+  useEffect(() => {
+    const countAge = () => {
+      if (day && month && year) {
+        const birthday = new Date(`${year}-${month}-${day}`);
+        const today = new Date();
+
+        const ageYear = today.getFullYear() - birthday.getFullYear();
+        const ageMonth = today.getMonth() - birthday.getMonth();
+        const ageDay = today.getDate() - birthday.getDate();
+
+        setAge({
+          year: ageYear,
+          month: ageMonth,
+          day: ageDay,
+        });
+      }
+    };
+    countAge();
+  }, [day, month, year]);
 
   return (
     <div className="flex flex-col bg-white ms-3 me-3 h-3/4 w-9/12  rounded-t-3xl rounded-bl-3xl rounded-br-[7rem] md:w-[650px] ">
