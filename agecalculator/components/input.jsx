@@ -7,7 +7,7 @@ const Input = ({ time, ts, value, onChange, name }) => {
   useEffect(() => {
     if (/^[a-zA-Z]+$/.test(value)) {
       setErrorMessage("Must be a valid date");
-    } else if (name === "day" && value > 31) {
+    } else if (name === "day" && (value > 31 || parseFloat(value) <= 0)) {
       setErrorMessage("Must be a valid date");
     } else {
       setErrorMessage(" ");
