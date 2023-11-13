@@ -1,11 +1,13 @@
 "use client";
 import React, { useEffect, useState } from "react";
 
-const Input = ({ time, ts, value, onChange }) => {
+const Input = ({ time, ts, value, onChange, name }) => {
   const [errorMessage, setErrorMessage] = useState("");
 
   useEffect(() => {
     if (/^[a-zA-Z]+$/.test(value)) {
+      setErrorMessage("Must be a valid date");
+    } else if (name === "day" && value > 31) {
       setErrorMessage("Must be a valid date");
     } else {
       setErrorMessage(" ");
@@ -24,6 +26,7 @@ const Input = ({ time, ts, value, onChange }) => {
         type="text"
         id="date"
         value={value}
+        name={name}
         onChange={onChange}
         pattern="[0-9]+"
         placeholder={ts}

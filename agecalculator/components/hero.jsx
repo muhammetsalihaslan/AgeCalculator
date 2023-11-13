@@ -56,6 +56,7 @@ const Hero = () => {
           time="DAY"
           ts="DD"
           value={day}
+          name="day"
           onChange={(e) => setDay(e.target.value)}
         />
         <Input
@@ -63,12 +64,14 @@ const Hero = () => {
           ts="MM"
           value={month}
           onChange={(e) => setMonth(e.target.value)}
+          name="month"
         />
         <Input
           time="YEAR"
           ts="YYYY"
           value={year}
           onChange={(e) => setYear(e.target.value)}
+          name="year"
         />
       </div>
       <hr className="m-6" />
