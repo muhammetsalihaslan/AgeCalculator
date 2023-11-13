@@ -8,7 +8,11 @@ const Hero = () => {
   const [day, setDay] = useState("");
   const [month, setMonth] = useState("");
   const [year, setYear] = useState("");
-  const [age, setAge] = useState("--");
+  const [age, setAge] = useState({
+    years: 0,
+    months: 0,
+    days: 0,
+  });
 
   useEffect(() => {
     const countAge = () => {
@@ -16,19 +20,33 @@ const Hero = () => {
         const birthday = new Date(`${year}-${month}-${day}`);
         const today = new Date();
 
-        const ageYear = today.getFullYear() - birthday.getFullYear();
-        const ageMonth = today.getMonth() - birthday.getMonth();
-        const ageDay = today.getDate() - birthday.getDate();
+        let ageYear = today.getFullYear() - birthday.getFullYear();
+        let ageMonth = today.getMonth() - birthday.getMonth();
+        let ageDay = today.getDate() - birthday.getDate();
+
+        if (ageDay < 0) {
+          const lastMonth = new Date(
+            today.getFullYear(),
+            today.getMonth() - 1,
+            0
+          );
+          ageDay = lastMonth.getDate() - birthday.getDate() + today.getDay();
+          ageMonth -= 1;
+        }
+
+        if (ageMonth < 0) {
+          ageMonth += 12;
+          ageYear -= 1;
+        }
 
         setAge({
-          year: ageYear,
-          month: ageMonth,
-          day: ageDay,
+          years: ageYear,
+          months: ageMonth,
+          days: ageDay,
         });
       }
     };
     countAge();
-    setAge("");
   }, [day, month, year]);
 
   return (
@@ -63,9 +81,9 @@ const Hero = () => {
         />
       </div>
       <div>
-        <Result timePart="year" age={age} />
-        <Result timePart="month" age={age} />
-        <Result timePart="day" age={age} />
+        <Result timePart="year" age={age.years} />
+        <Result timePart="month" age={age.months} />
+        <Result timePart="day" age={age.days} />
       </div>
     </div>
   );
