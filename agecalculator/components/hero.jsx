@@ -8,7 +8,7 @@ const Hero = () => {
   const [day, setDay] = useState("");
   const [month, setMonth] = useState("");
   const [year, setYear] = useState("");
-  const [age, setAge] = useState([]);
+  const [age, setAge] = useState("--");
 
   useEffect(() => {
     const countAge = () => {
@@ -63,9 +63,9 @@ const Hero = () => {
         />
       </div>
       <div>
-        <Result timePart="year" age={age.year} />
-        <Result timePart="month" age={age.month} />
-        <Result timePart="day" age={age.day} />
+        <Result timePart="year" age={age} />
+        <Result timePart="month" age={age} />
+        <Result timePart="day" age={age} />
       </div>
     </div>
   );
