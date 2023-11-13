@@ -9,6 +9,10 @@ const Input = ({ time, ts, value, onChange, name }) => {
       setErrorMessage("Must be a valid date");
     } else if (name === "day" && (value > 31 || parseFloat(value) <= 0)) {
       setErrorMessage("Must be a valid date");
+    } else if (name === "month" && (value > 12 || parseFloat(value) <= 0)) {
+      setErrorMessage("Must be a valid date");
+    } else if (name === "year" && parseFloat(value) <= 100) {
+      setErrorMessage("Must be a valid date");
     } else {
       setErrorMessage(" ");
     }
