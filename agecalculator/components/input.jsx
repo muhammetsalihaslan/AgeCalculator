@@ -20,7 +20,11 @@ const Input = ({ time, ts, value, onChange, name }) => {
       setErrorMessage("Must be a valid date");
     } else if (name === "year" && parseFloat(numericValue) <= 100) {
       setErrorMessage("Must be a valid date");
-    } else if (name === "day" && value > 30 && [4, 6, 9, 11].includes(value)) {
+    } else if (
+      name === "day" &&
+      numericValue > 30 &&
+      ["4", "6", "9", "11"].includes(value)
+    ) {
       setErrorMessage("Must be a valid date");
     } else {
       setErrorMessage(" ");
