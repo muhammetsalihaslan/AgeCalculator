@@ -5,31 +5,29 @@ const Input = ({ time, ts, value, onChange, name }) => {
   const [errorMessage, setErrorMessage] = useState("");
 
   useEffect(() => {
-    const numericValue = value;
+    const numericValue = parseFloat(value);
     if (/^[a-zA-Z]+$/.test(value)) {
       setErrorMessage("Must be a valid date");
-    } else if (
-      name === "day" &&
-      (parseFloat(numericValue) < 1 || numericValue > 31)
-    ) {
+    } else if (name === "day" && (numericValue < 1 || numericValue > 31)) {
+      setErrorMessage("Must be a valid date");
+    } else if (name === "month" && (numericValue > 12 || numericValue <= 0)) {
       setErrorMessage("Must be a valid date");
     } else if (
-      name === "month" &&
-      (numericValue > 12 || parseFloat(numericValue) <= 0)
+      name === "year" &&
+      numericValue <= 100 &&
+      numericValue.toString().length <= 2
     ) {
-      setErrorMessage("Must be a valid date");
-    } else if (name === "year" && parseFloat(numericValue) <= 100) {
       setErrorMessage("Must be a valid date");
     } else if (
       name === "day" &&
       numericValue > 30 &&
-      ["4", "6", "9", "11"].includes(value)
+      ["4", "6", "9", "11"].includes(numericValue)
     ) {
       setErrorMessage("Must be a valid date");
     } else {
       setErrorMessage(" ");
     }
-  }, [value, name]);
+  }, [value]);
 
   return (
     <div className="flex flex-col gap-y-1">
