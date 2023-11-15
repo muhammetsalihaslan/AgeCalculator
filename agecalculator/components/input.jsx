@@ -45,7 +45,7 @@ const Input = ({ time, ts, value, onChange, name }) => {
         onChange={onChange}
         pattern="[0-9]+"
         placeholder={ts}
-        className="focus-outline-none w-[90px] h-[3rem] md:h-[4rem] md:w-[140px] rounded-lg border text-md md:text-xl font-semibold text-slate-500 border-slate-300 p-4 outline-none invalid:border-red-500 invalid:text-red-500 in"
+        className="focus-outline-none w-[90px] h-[3rem] md:h-[4rem] md:w-[140px] rounded-lg border text-md md:text-xl font-semibold text-slate-500 border-slate-300 p-4 outline-none invalid:border-red-500 invalid:text-red-500"
         required
       />
       {errorMessage && (
